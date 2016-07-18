@@ -9,6 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -21,29 +29,46 @@ public class AnimalServiceList extends AppCompatActivity {
 
     private ProgressDialog pDialog;
     Context context;
+    public static final String JSONURL="http://localhost/dogbazaar/get_all_dogs.php";
 
+    ListView listView;
+    int imageNext=R.mipmap.arrow;
     //JSONParser jsonParser=new JSONParser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_service_list);
+        listView=(ListView)findViewById(R.id.serviceList);
+      //  CustomServiceListView customServiceListView=new CustomServiceListView(this,)
 
 
     }
+    private void sendRequest(){
+        StringRequest stringRequest=new StringRequest(JSONURL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        showJSON(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(AnimalServiceList.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void showJSON(String JSON){
+        JSONParser jsonParser=new JSONParser(JSON);
+        jsonParser.parseJSON();
+
+        CustomServiceListView customServiceListView=new CustomServiceListView(this,jsonParser.animalImage,jsonParser.animalName,
+                jsonParser.animalPrice,imageNext);
+        listView.setAdapter(customServiceListView);
 
 
-    public String  performPostCall(String requestURL,
-                                   HashMap<String, String> postDataParams){
-
-        URL url;
-        String response="";
-        try{
-//            url=new URL()
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return null;
     }
 
 

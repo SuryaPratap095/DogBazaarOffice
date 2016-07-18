@@ -55,8 +55,16 @@ public class JSONParser {
            users=jsonObject.getJSONArray(JSON_ARRAY);
 
            animalName=new String[users.length()];
-
+           animalPrice=new int[users.length()];
            animalImage=new int[users.length()];
+
+           for(int i=0; i<users.length();i++){
+               JSONObject jo=users.getJSONObject(i);
+               animalName[i]=jo.getString(KEY_NAME);
+               animalImage[i]=jo.getInt(KEY_IMAGE);
+               animalPrice[i]=jo.getInt(KEY_PRICE);
+
+           }
 
 
        }catch (Exception ex){
