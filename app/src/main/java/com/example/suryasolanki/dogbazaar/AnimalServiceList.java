@@ -29,7 +29,7 @@ public class AnimalServiceList extends AppCompatActivity {
 
     private ProgressDialog pDialog;
     Context context;
-    public static final String JSONURL="http://localhost/dogbazaar/get_all_dogs.php";
+    public static final String JSONURL="http://172.16.21.77/dogbazaar/get_all_dogs.php";
 
     ListView listView;
     int imageNext=R.mipmap.arrow;
@@ -39,9 +39,10 @@ public class AnimalServiceList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_service_list);
         listView=(ListView)findViewById(R.id.serviceList);
+       // listView.setAdapter();
       //  CustomServiceListView customServiceListView=new CustomServiceListView(this,)
 
-
+        sendRequest();
     }
     private void sendRequest(){
         StringRequest stringRequest=new StringRequest(JSONURL,
@@ -53,7 +54,7 @@ public class AnimalServiceList extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(AnimalServiceList.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(AnimalServiceList.this,error.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
         RequestQueue requestQueue= Volley.newRequestQueue(this);
@@ -64,7 +65,7 @@ public class AnimalServiceList extends AppCompatActivity {
         JSONParser jsonParser=new JSONParser(JSON);
         jsonParser.parseJSON();
 
-        CustomServiceListView customServiceListView=new CustomServiceListView(this,jsonParser.animalImage,jsonParser.animalName,
+        CustomServiceListView customServiceListView=new CustomServiceListView(this,imageNext,jsonParser.animalName,
                 jsonParser.animalPrice,imageNext);
         listView.setAdapter(customServiceListView);
 

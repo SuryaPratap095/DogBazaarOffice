@@ -15,14 +15,15 @@ import android.widget.TextView;
 public class CustomServiceListView extends BaseAdapter {
 
     private Context mcontext;
-    private int[] dog_image;
+    private int dog_image;
     private String[] dog_name;
     private int[] dog_price;
     private int imageNext;
 
-    public CustomServiceListView(Context mcontext, int[] dog_image, String[] dog_name, int[] dog_price, int imageNext) {
+    public CustomServiceListView(Context mcontext, int dog_image, String[] dog_name, int[] dog_price, int imageNext) {
         this.mcontext = mcontext;
-        this.dog_image = dog_image;
+       // this.dog_image = dog_image;
+        this.dog_image=dog_image;
         this.dog_name = dog_name;
         this.dog_price = dog_price;
         this.imageNext = imageNext;
@@ -50,12 +51,12 @@ public class CustomServiceListView extends BaseAdapter {
 
         TextView txtName=(TextView)animalServiceRow.findViewById(R.id.txtName);
         TextView txtPrice=(TextView)animalServiceRow.findViewById(R.id.txtPrice);
-        ImageView dogImage=(ImageView)animalServiceRow.findViewById(R.id.imageAnimal);
+        ImageView dogImage=(ImageView)animalServiceRow.findViewById(R.id.imageNext);
         ImageView nextImage=(ImageView)animalServiceRow.findViewById(R.id.imageNext);
 
         txtName.setText(dog_name[position]);
         txtPrice.setText(Integer.toString(dog_price[position]));
-        dogImage.setImageResource(dog_image[position]);
+        dogImage.setImageResource(imageNext);
         nextImage.setImageResource(imageNext);
 
         return animalServiceRow;
