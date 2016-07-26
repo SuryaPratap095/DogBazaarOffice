@@ -33,6 +33,8 @@ public class AnimalServiceList extends AppCompatActivity {
 
     ListView listView;
     int imageNext=R.mipmap.arrow;
+    int boxerImage=R.mipmap.boxer;
+
     //JSONParser jsonParser=new JSONParser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,7 @@ public class AnimalServiceList extends AppCompatActivity {
         JSONParser jsonParser=new JSONParser(JSON);
         jsonParser.parseJSON();
 
-        CustomServiceListView customServiceListView=new CustomServiceListView(this,imageNext,jsonParser.animalName,
+        CustomServiceListView customServiceListView=new CustomServiceListView(this,boxerImage,jsonParser.animalName,
                 jsonParser.animalPrice,imageNext);
         listView.setAdapter(customServiceListView);
 

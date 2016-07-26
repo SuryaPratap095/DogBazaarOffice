@@ -51,12 +51,12 @@ public class CustomServiceListView extends BaseAdapter {
 
         TextView txtName=(TextView)animalServiceRow.findViewById(R.id.txtName);
         TextView txtPrice=(TextView)animalServiceRow.findViewById(R.id.txtPrice);
-        ImageView dogImage=(ImageView)animalServiceRow.findViewById(R.id.imageNext);
+        ImageView dogImage=(ImageView)animalServiceRow.findViewById(R.id.imageAnimal);
         ImageView nextImage=(ImageView)animalServiceRow.findViewById(R.id.imageNext);
 
         txtName.setText(dog_name[position]);
         txtPrice.setText(Integer.toString(dog_price[position]));
-        dogImage.setImageResource(imageNext);
+        dogImage.setImageResource(dog_image);
         nextImage.setImageResource(imageNext);
 
         return animalServiceRow;

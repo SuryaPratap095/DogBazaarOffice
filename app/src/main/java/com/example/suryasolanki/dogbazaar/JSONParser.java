@@ -32,12 +32,14 @@ public class JSONParser {
     public static String[] animalName;
     public static int[] animalPrice;
     public static int[] animalImage;
+    public static String[] priceTry;
 
 
     public static String JSON_ARRAY="dogs";
     public static String KEY_NAME="dog_name";
     public static String KEY_IMAGE="dog_image";
     public static String KEY_PRICE="dog_price";
+
 
     private JSONArray users=null;
 
@@ -56,6 +58,7 @@ public class JSONParser {
 
            animalName=new String[users.length()];
            animalPrice=new int[users.length()];
+           priceTry=new String[users.length()];
          //  animalImage=new int[users.length()];
 
            for(int i=0; i<users.length();i++){
@@ -63,7 +66,9 @@ public class JSONParser {
                animalName[i]=jo.getString(KEY_NAME);
               // animalImage[i]=jo.getInt(KEY_IMAGE);
                //animalPrice[i]=R.mipmap.arrow;
-               animalPrice[i]=jo.getInt(KEY_PRICE);
+              // animalPrice[i]=jo.getInt(KEY_PRICE);
+               priceTry[i] =jo.getString(KEY_PRICE);
+
 
            }
 
@@ -72,7 +77,7 @@ public class JSONParser {
            ex.printStackTrace();
        }
 
-   }
+       }
 
 
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.suryasolanki.dogbazaar">
-    <uses-permission android:name="android.permission.INTERNET"/>
+    package="com.example.suryasolanki.dogbazaar" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -36,6 +37,10 @@
         <activity
             android:name=".AnimalServiceList"
             android:label="@string/title_activity_animal_service_list" >
+        </activity>
+        <activity
+            android:name=".tryListView"
+            android:label="@string/title_activity_try_list_view" >
         </activity>
     </application>
 
