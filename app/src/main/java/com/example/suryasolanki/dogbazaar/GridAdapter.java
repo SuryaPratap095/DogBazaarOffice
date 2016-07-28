@@ -81,10 +81,10 @@ public class GridAdapter extends BaseAdapter{
 
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "You clicked At " + breeds[+position], Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(mContext, "You clicked At " + breeds[+position], Toast.LENGTH_SHORT).show();
                     for (int i = 0; i <= 3; i++) {
                         if (i == position) {
-                            Intent intent = new Intent(mContext, tryListView.class);
+                            Intent intent = new Intent(mContext, AnimalServiceList.class);
                             mContext.startActivity(intent);
                             break;
                         }

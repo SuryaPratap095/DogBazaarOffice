@@ -25,7 +25,7 @@ public class tryListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return animalName.length;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class tryListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override

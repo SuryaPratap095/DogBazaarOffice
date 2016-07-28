@@ -17,6 +17,15 @@ import com.android.volley.toolbox.Volley;
 public class tryListView extends AppCompatActivity {
 
     ListView listView;
+    public String array[]={
+            "Hello",
+            "world",
+            "I",
+            "Am",
+            "Gone",
+            "Make",
+            "It",
+    };
     public static final String JSONURL="http://172.16.21.77/dogbazaar/get_all_dogs.php";
     tryListAdapter tryListAdapter;
 
@@ -49,11 +58,11 @@ public class tryListView extends AppCompatActivity {
     public void showJSON(String JSONresposne){
         JSONParser jsonParser=new JSONParser(JSONresposne);
         jsonParser.parseJSON();
-        ArrayAdapter arrayAdapter=new ArrayAdapter<String>(this,R.layout.try_array_layout,jsonParser.priceTry);
+        //ArrayAdapter arrayAdapter=new ArrayAdapter<String>(this,R.layout.try_array_layout,jsonParser.priceTry);
        tryListAdapter =new tryListAdapter(this,jsonParser.animalName,jsonParser.priceTry);
         listView=(ListView)findViewById(R.id.listTry);
-        listView.setAdapter(new tryListAdapter(this,jsonParser.animalName,jsonParser.priceTry));
-       // listView.setAdapter(arrayAdapter);
+        //listView.setAdapter(new tryListAdapter(this,jsonParser.animalName,jsonParser.priceTry));
+       listView.setAdapter(tryListAdapter);
     }
 
     @Override
